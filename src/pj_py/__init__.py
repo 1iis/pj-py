@@ -201,10 +201,11 @@ def init(
 
     api = GhApi(token=token)
 
-    # 1. Spawn from template
-    _ = api.repos.create_using_template(
+    # 1. Spawn from template under the target org
+    repo = api.repos.create_using_template(
         template_owner=tmpl_owner,
         template_repo=tmpl_repo,
+        owner=org,
         name=name,
         description=desc,
         private=private,
@@ -212,7 +213,8 @@ def init(
 
     # 2. Clone locally (token-embedded URL avoids auth prompt)
     local_path = (path or Path.cwd()) / name
-    clone_url = f"https://{token}@github.com/{org}/{name}.git"
+    actual_owner = repo.owner.login
+    clone_url = f"https://{token}@github.com/{actual_owner}/{name}.git"
     subprocess.run(["git", "clone", clone_url, str(local_path)], check=True)
 
     # 3. Rename template placeholders
