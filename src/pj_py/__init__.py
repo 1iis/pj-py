@@ -1,8 +1,8 @@
 """pj-py: spawn Python projects from templates."""
 
 import os
-import sys
 import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -105,7 +105,7 @@ def init(
     api = GhApi(token=token)
 
     # 1. Spawn from template
-    repo = api.repos.create_using_template(
+    _ = api.repos.create_using_template(
         template_owner=tmpl_owner,
         template_repo=tmpl_repo,
         name=name,
