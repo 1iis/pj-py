@@ -1,6 +1,7 @@
 """pj-py: spawn Python projects from templates."""
 
 import os
+import sys
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -131,3 +132,12 @@ def init(
     subprocess.run(["git", "push"], cwd=local_path, check=True)
 
     return Project(owner=org, repo=name, path=local_path)
+
+def main() -> None:
+    """CLI entry point. Minimal; full UX lives in higher-level wrappers."""
+    try:
+        p = init(sys.argv[1])
+        print(f"Created {p.owner}/{p.repo} at {p.path}")
+    except PjPyError as e:
+        print(f"pj-py error: {e}", file=sys.stderr)
+        sys.exit(1)
