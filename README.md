@@ -1,6 +1,6 @@
 # pj-py
 
-Spawn Python projects from templates — one command, zero manual setup.
+Spawn Python projects from templates.
 
 ## What it does
 
