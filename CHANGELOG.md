@@ -1,5 +1,10 @@
 <!-- do not remove -->
 
+## 0.0.3
+
+### Added\n\n- `ship()` — bump, changelog, GH release, PyPI publish in one call\n- `_parse_remote_owner_repo()` — helper to extract owner/repo from git origin
+
+
 ## 0.0.2
 
 ### Added
