@@ -5,7 +5,7 @@ description = "Spawn Python projects from templates."
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
-dependencies = ["ghapi"]
+dependencies = ["ghapi", "pj"]
 
 [tool.hatch.version]
 path = "src/pj_py/__init__.py"

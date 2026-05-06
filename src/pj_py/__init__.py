@@ -15,6 +15,14 @@ from typing import Optional
 
 from ghapi.all import GhApi
 
+def detect(path: Path) -> bool:
+    """Return True if *path* is a Python project (has ``pyproject.toml`` with a [project] section)."""
+    pp = path / "pyproject.toml"
+    return pp.exists() and "[project]" in pp.read_text()
+
+
+
+
 
 class PjPyError(Exception):
     """Base error for pj-py operations."""
@@ -252,3 +260,9 @@ def main() -> None:
     except PjPyError as e:
         print(f"pj-py error: {e}", file=sys.stderr)
         sys.exit(1)
+
+try:
+    from pj import register as _pj_register
+    _pj_register("py", "pj_py")
+except ImportError:
+    pass  # standalone use, no dispatcher registered
