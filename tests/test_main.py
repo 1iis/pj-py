@@ -1,4 +1,4 @@
-from my_package import __version__, main
+from pj_py import __version__, main
 
 def test_version():
     assert __version__ is not None
