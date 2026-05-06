@@ -1,4 +1,6 @@
 """pj-py: spawn Python projects from templates."""
+__version__ = "0.0.2"
+
 
 import os
 import subprocess
@@ -9,7 +11,6 @@ from typing import Optional
 
 from ghapi.all import GhApi
 
-__version__ = "0.0.1"
 
 
 class PjPyError(Exception):
